@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { useState } from 'react';
+
 
 function App() {
+  const [show,funcShow] =useState(true);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <h1>Hello World</h1>
       </header>
-    </div>
+      <button onClick={()=>funcShow(!show)}>Functional Comp</button>
+      {show ? <FuncComp></FuncComp> : null}
+      </div>
   );
 }
+
+
+function FuncComp(){
+
+const [_date, setDate] = useState((new Date()).toString());
+
+  // const dateState = useState((new Date()).toString());
+  // let _date = dateState[0];
+  // let setDate = dateState[1];
+ return(
+<div className="container">
+  <h2>Functional Style Component</h2>
+<p>Date : {_date} </p>
+<input type="button" value="new date" onClick={function(){
+setDate(new Date().toString())}}></input>
+</div>    
+  );
+}
+
+
+
 
 export default App;
