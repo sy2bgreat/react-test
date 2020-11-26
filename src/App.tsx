@@ -1,5 +1,6 @@
-import React from 'react'
-import { useState } from 'react';
+import { setupMaster } from 'cluster';
+import React, { useState } from 'react'
+
 
 
 function App() {
@@ -11,27 +12,53 @@ function App() {
       </header>
       <button onClick={()=>funcShow(!show)}>Functional Comp</button>
       {show ? <FuncComp></FuncComp> : null}
+      <UrName></UrName>
       </div>
   );
 }
 
 
-function FuncComp(){
+const  FuncComp = () => {
 
-const [_date, setDate] = useState((new Date()).toString());
+const [date, setDate] = useState((new Date()));
 
-  // const dateState = useState((new Date()).toString());
-  // let _date = dateState[0];
-  // let setDate = dateState[1];
  return(
 <div className="container">
   <h2>Functional Style Component</h2>
-<p>Date : {_date} </p>
-<input type="button" value="new date" onClick={function(){
-setDate(new Date().toString())}}></input>
+<p>Date : {date.toString()} </p>
+<button value="new date" onClick={ () => { 
+  setDate(new Date())}}>Date Reload</button>
 </div>    
   );
 }
+
+const UrName = () => {
+  const [inputValue, setValue] = useState("");
+  const [name,setName] =useState("");
+
+  setUser = (e) => {
+    setValue(e.target.value)
+  }
+
+  upDateName = (e) => {
+    e.preventDefault();
+    setName(inputValue);
+    setValue("");
+  }
+
+return(
+  <form>
+    <p>Your Name ; {name}</p>
+    <input type="text" value={inputValue} onChange={setUser}></input>
+    <button onClick={upDateName}>Save</button>
+  </form>
+
+  )
+
+};
+
+
+
 
 
 
