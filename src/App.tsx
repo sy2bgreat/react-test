@@ -32,11 +32,11 @@ const UrName = () => {
   const [inputValue, setValue] = useState("");
   const [name,setName] =useState("");
 
-  const setUser = (Event: React.ChangeEvent<HTMLInputElement>):void => {
-    setValue(Event.target.value);
+  const setUser = (event: React.ChangeEvent<HTMLInputElement>):void => {
+    setValue(event.target.value);
     };
-  const updateName = (Event:React.MouseEvent) => {
-    Event.preventDefault();
+  const updateName = (event:React.MouseEvent) => {
+    event.preventDefault();
     setName(inputValue);
     setValue("");
     };
