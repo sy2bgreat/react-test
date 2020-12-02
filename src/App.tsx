@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { ReactComponent as Logo } from '@assets/icons/logo.svg';
 import './App.css'
 
 
@@ -6,6 +7,7 @@ function App() {
   const [show,funcShow] =useState(true);
   return (
     <div className="App">
+      <Logo></Logo>
       <button onClick={()=>funcShow(!show)}>See</button>
       {show ? <FuncComp></FuncComp> : null}
       <UrName></UrName>
