@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Route, Link, BrowserRouter } from 'react-router-dom';
 import Home from './Home';
 import About from './routes/About';
 import Contact from './routes/Contact';
 import { ReactComponent as Icon } from '@assets/icons/hamburger_icon.svg';
 
-const Header = () => {
+interface HeaderState {
+  navState: boolean;
+  setNavState: any;
+}
+
+const enhancer = (BaseComponent: FC<HeaderState>) => (props: any) => {
   const [navState, setNavState] = useState(false);
+
+  return (
+    <BaseComponent {...props} navState={navState} setNavState={setNavState} />
+  );
+};
+
+const HeaderView = ({ navState, setNavState }: HeaderState) => {
   return (
     <BrowserRouter>
       <header className="app-header">
@@ -37,4 +49,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default enhancer(HeaderView);
