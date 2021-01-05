@@ -1,24 +1,26 @@
-.App {
-  display: grid;
-  grid-gap: 5%;
-  grid-template-columns: 25% 25% 40%;
+#root {
   margin: 0;
   padding: 0;
-  max-width: 100vw;
-  max-height: 100vh;
-  /* box-sizing: border-box; */
-  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 h1 {
   text-align: center;
 }
 
+/* header */
 .app-header {
   display: flex;
-  flex-direction: column;
+
   grid-column: 3;
   grid-row: 1 / span 2;
+}
+
+.hide {
+  display: none !important;
 }
 
 .burger {
@@ -26,20 +28,19 @@ h1 {
   margin: 0;
   left: 70%;
   top: 10px;
-  z-index: 1;
+  z-index: 2;
   transition: all 400ms ease;
 }
 
 .burger.expanded {
   transform: rotate(90deg);
-  /* float:right; */
 }
 
 .main-nav {
   display: none;
-  height: 100vh;
-  margin-top: -33px;
-  background-color: #61dafb;
+  width: 100%;
+  z-index: 1;
+  background-color: skyblue;
   transition: transform 250ms ease-in-out;
   transform: translateX(-100%);
   align-items: center;
@@ -68,37 +69,100 @@ h1 {
   color: #61dafb;
 }
 
+/* header ends & home component starts */
+
+.home-container {
+  grid-column: 1 / span 2;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: yellow;
+}
+
+/* home ends contact component starts*/
+.contact-container {
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / span 2;
+  position: absolute;
+}
+.hide {
+  display: none;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
-  width: 70vw;
-  height: 70vh;
+  width: 70%;
   margin: 0 auto;
+  padding: 10%;
 }
 
-.contact-form label,
-input,
-select {
-  width: 45vw;
-  height: 35px;
-  margin: 5px;
+.contact-form input {
+  width: 300px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.contact-form select {
+  width: 300px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.contact-form label {
+  padding: 15px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .contact-form button {
   width: 150px;
-  margin: 10px;
+  height: 40px;
+  border: none;
+  background-color: orange;
+  color: white;
+  margin: 15px auto 0;
 }
 
-@media screen and (min-width: 620px) and (max-width: 768px) {
-  .App {
-    display: grid;
-    grid-gap: 5%;
-    grid-template-columns: 30% 30% 30%;
-  }
+/* 404 page */
+
+.page-not-found-container {
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / span 3;
+}
+
+.page-not-found-container button {
+  width: 150px;
+  height: 40px;
+  display: block;
+  border: none;
+  background-color: orange;
+  color: white;
+  margin: 0 auto;
+}
+
+.page-not-found-container__h1 {
+  margin: 0;
+  padding: 30px 0 30px 0;
+  text-align: center;
+  font-size: 40px;
+}
+
+.page-not-found-container__p {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  .App {
+  #root {
     display: block;
   }
 
@@ -145,11 +209,44 @@ select {
   .main-nav ul {
     display: flex;
     flex-direction: row;
+  }
+
+  /* home */
+  .home-container {
+    position: static;
+    height: calc(100% - 150px);
+  }
+  .home-container h1 {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Contact */
+
+  .contact-container {
+    position: static;
+    height: calc(100% - 150px);
+    padding: 0;
+  }
+  .contact-container h1 {
+    margin: 0;
+  }
+
+  .contact-form {
+    padding: 5%;
+  }
+
+  .contact-form input {
+    width: 500px;
+  }
+
+  .contact-form select {
+    width: 500px;
   }
 }
 
 @media screen and (min-width: 1025px) {
-  .App {
+  #root {
     display: block;
   }
 
@@ -164,7 +261,7 @@ select {
   }
 
   .main-nav {
-    display: inline-block;
+    display: block;
     width: 100vw;
     height: 150px;
     background-color: #61dafb;
@@ -196,5 +293,38 @@ select {
   .main-nav ul {
     display: flex;
     flex-direction: row;
+  }
+
+  /* home */
+  .home-container {
+    position: static;
+    height: calc(100% - 150px);
+  }
+  .home-container h1 {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Contact */
+  .contact-container {
+    position: static;
+    height: calc(100% - 150px);
+    padding: 0;
+  }
+  .contact-container h1 {
+    margin: 0;
+    padding: 15px 0px 0px 0px;
+  }
+
+  .contact-form {
+    padding: 50px;
+  }
+
+  .contact-form input {
+    width: 600px;
+  }
+
+  .contact-form select {
+    width: 600px;
   }
 }
