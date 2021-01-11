@@ -9,12 +9,12 @@ import pepperHot from '@assets/icons/pepper-hot.svg';
 import pizzaSlice from '@assets/icons/pizza-slice.svg';
 
 const ids = [
-  { name: 'Apple', src: apple },
-  { name: 'Carrot', src: carrot },
-  { name: 'Hotdog', src: hotdog },
-  { name: 'Ice cream', src: iceCream },
-  { name: 'Pepper', src: pepperHot },
-  { name: 'Pizze Slice!', src: pizzaSlice },
+  { name: 'Apple', src: apple, prc: 1 },
+  { name: 'Carrot', src: carrot, prc: 2 },
+  { name: 'Hotdog', src: hotdog, prc: 3 },
+  { name: 'Ice cream', src: iceCream, prc: 4 },
+  { name: 'Pepper', src: pepperHot, prc: 5 },
+  { name: 'Pizze Slice!', src: pizzaSlice, prc: 6 },
 ];
 
 const Home = () => {
@@ -26,8 +26,8 @@ const Home = () => {
         {ids.map((list, index) => (
           <div className="home-card" key={index}>
             <img src={list.src} className="home-card_img"></img>
-            <h3>{list.name}</h3>
-            <button onClick={() => setAddFood(list)}>add</button>
+            <h3>{list.name}</h3> <h3>{list.prc}</h3>
+            <button onClick={() => setAddFood(list.prc)}>add</button>
           </div>
         ))}
       </div>

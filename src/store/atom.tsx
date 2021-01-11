@@ -17,7 +17,7 @@ export const cartState = selector({
 
 export const addFood = selector({
   key: 'addFood',
-  set: ({ set, get }, newFood) => {
-    set(cart, [...get(cart), newFood]);
+  set: ({ set, get }) => {
+    set(cart, [...get(cart)]);
   },
 });
