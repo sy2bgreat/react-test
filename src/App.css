@@ -79,7 +79,20 @@ h1 {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: yellow;
+}
+
+.home-card_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.home-card {
+  margin: 0 auto;
+}
+
+.home-card_img {
+  width: 100px;
+  height: 100px;
 }
 
 /* home ends contact component starts*/
