@@ -1,23 +1,26 @@
-import { atom, selector } from 'recoil';
+import { atom, RecoilState, selector, RecoilValueReadOnly } from 'recoil';
 
-export const cart = atom({
+export interface CartItem {
+  name: Number;
+}
+
+export const cart: RecoilState<CartItem[]> = atom({
   key: 'cart',
-  default: [],
+  default: [] as CartItem[],
 });
 
-export const cartState = selector({
+export const cartState: RecoilValueReadOnly<{ totalQty: Number }> = selector({
   key: 'cartState',
   get: ({ get }) => {
-    const totalQty = get(cart).reduce((a, b) => a + b, 0);
+    const totalQty = get(cart).reduce((a, b: any) => a + b, 0);
     return {
       totalQty,
     };
   },
 });
 
-export const addFood = selector({
+export const addFood: RecoilState<any> = selector({
   key: 'addFood',
-  set: ({ set, get }) => {
-    set(cart, [...get(cart)]);
-  },
+  get: ({ get }) => get(cart),
+  set: ({ set, get }, newValue) => set(cart, [...get(cart), newValue]),
 });

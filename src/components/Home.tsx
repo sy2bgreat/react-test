@@ -19,15 +19,23 @@ const ids = [
 
 const Home = () => {
   const { totalQty } = useRecoilValue(cartState);
-  const setAddFood = useSetRecoilState(addFood);
+  const addItem = useSetRecoilState(addFood);
+
   return (
     <section className="home-container">
+      <h2 className="home-cart"> Cart: $ {totalQty} </h2>
       <div className="home-card_container">
         {ids.map((list, index) => (
           <div className="home-card" key={index}>
             <img src={list.src} className="home-card_img"></img>
-            <h3>{list.name}</h3> <h3>{list.prc}</h3>
-            <button onClick={() => setAddFood(list.prc)}>add</button>
+            <div className="home-card_wrapper">
+              <h3 className="home-card_list">
+                {list.name} ${list.prc}
+              </h3>
+              <button className="home-card_button" onClick={() => addItem(list.prc)}>
+                +
+              </button>
+            </div>
           </div>
         ))}
       </div>

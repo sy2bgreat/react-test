@@ -81,6 +81,12 @@ h1 {
   padding: 0;
 }
 
+.home-cart {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
 .home-card_container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -90,9 +96,23 @@ h1 {
   margin: 0 auto;
 }
 
+.home-card_wrapper {
+  display: flex;
+  margin: 0 auto;
+}
+
 .home-card_img {
   width: 100px;
   height: 100px;
+}
+
+.home-card_button {
+  width: 30px;
+  height: 30px;
+  margin: 15px 0 0 5px;
+  background-color: rgb(161, 200, 238);
+  border: 0;
+  padding: 0;
 }
 
 /* home ends contact component starts*/
